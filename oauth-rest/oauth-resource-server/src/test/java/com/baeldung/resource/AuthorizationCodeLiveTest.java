@@ -13,7 +13,15 @@ import org.springframework.http.HttpStatus;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-//Before running this live test make sure both authorization server and resource server are running   
+//Before running this live test make sure both authorization server and resource server are running
+
+/**
+ * We want to implement a custom claims validation logic. Concretely, we want the Resource Sever to only accept
+ * Access Tokens whose preferred_username claim indicates that the username belongs to the “@test.com” email
+ * domain, and reject everything else. So for example, a token issued to “john@test.com” should be accepted,
+ * but one for “mike@other.com” shouldn’t.
+ *
+ */
 
 public class AuthorizationCodeLiveTest {
     public final static String AUTH_SERVER = "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect";
@@ -32,6 +40,14 @@ public class AuthorizationCodeLiveTest {
 
     }
 
+	@Test
+	public void givenUser_whenUseFooClient_thenFailureForNonTestDomain() {
+		final String accessToken = obtainAccessTokenWithAuthorizationCode("mike@other.com", "pass");
+
+		final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get(RESOURCE_SERVER + "/api/foos/1");
+		assertEquals(401, fooResponse.getStatusCode());
+
+	}
     private String obtainAccessTokenWithAuthorizationCode(String username, String password) {
     	
 
