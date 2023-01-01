@@ -63,6 +63,30 @@
             <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- to pull resource-server stater with its companion for unit-tests -->
+        <!--<dependency>
+            <groupId>com.c4-soft.springaddons</groupId>
+            <artifactId>spring-addons-${app-type}-${token}-resource-server</artifactId>
+            <version>${springaddons.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.c4-soft.springaddons</groupId>
+            <artifactId>spring-addons-${app-type}-${token}-test</artifactId>
+            <version>${springaddons.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- If you don't want starters but need @WithMockJwtAuth or WithMockBearerTokenAuthentication -->
+        <!-- instead of the two preceding, you can pull test annotations only -->
+        <dependency>
+            <groupId>com.c4-soft.springaddons</groupId>
+            <artifactId>spring-addons-oauth2-test</artifactId>
+            <version>${springaddons.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -97,6 +121,9 @@
         <!-- non-dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>13</java.version>
+        <springaddons.version>6.0.9</springaddons.version>
+        <app-type>webmvc</app-type><!-- alternative value is webflux !-->
+        <token>jwt</token><!-- alternative value is introspecting !-->
     </properties>
 
 </project>

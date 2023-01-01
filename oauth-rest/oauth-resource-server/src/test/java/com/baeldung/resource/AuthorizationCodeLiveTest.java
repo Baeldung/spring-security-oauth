@@ -21,6 +21,8 @@ import io.restassured.response.Response;
  * domain, and reject everything else. So for example, a token issued to “john@test.com” should be accepted,
  * but one for “mike@other.com” shouldn’t.
  *
+ *
+ *
  */
 
 public class AuthorizationCodeLiveTest {
@@ -31,7 +33,7 @@ public class AuthorizationCodeLiveTest {
 	private final static String CLIENT_SECRET = "newClientSecret";
 
     @Test
-    public void givenUser_whenUseFooClient_thenOkForFooResourceOnly() {
+    public void givenUser_whenUsesFooClient_thenOkForFooResourceOnly() {
         final String accessToken = obtainAccessTokenWithAuthorizationCode("john@test.com", "123");
 
         final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get(RESOURCE_SERVER + "/api/foos/1");
@@ -41,7 +43,7 @@ public class AuthorizationCodeLiveTest {
     }
 
 	@Test
-	public void givenUser_whenUseFooClient_thenFailureForNonTestDomain() {
+	public void givenUser_whenUseFoosClient_thenFailureForNonTestDomain() {
 		final String accessToken = obtainAccessTokenWithAuthorizationCode("mike@other.com", "pass");
 
 		final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get(RESOURCE_SERVER + "/api/foos/1");

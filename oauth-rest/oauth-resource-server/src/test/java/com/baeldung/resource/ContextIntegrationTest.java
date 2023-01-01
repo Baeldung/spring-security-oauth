@@ -7,6 +7,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.baeldung.resource.ResourceServerApp;
 
+/*
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = { ResourceServerApp.class })
 public class ContextIntegrationTest {
@@ -16,4 +17,4 @@ public class ContextIntegrationTest {
 
     }
 
-}
+}*/

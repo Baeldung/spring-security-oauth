@@ -20,18 +20,31 @@ public class ImplicitFlowLiveTest {
 	private final static String RESOURCE_SERVER = "http://localhost:8081/resource-server";
 	private final static String REDIRECT_URL = "http://localhost:8082/new-client/login/oauth2/code/custom";
 	private final static String CLIENT_ID = "newClient";
-	private final static String USERNAME = "john@test.com";
-	private final static String PASSWORD = "123";
+	private final static String USERNAME_WITH_CORRECT_DOMAIN = "john@test.com";
+	private final static String PASSWORD_FOR_USER_WITH_CORRECT_DOMAIN = "123";
+
+	private final static String USERNAME_WITH_INCORRECT_DOMAIN = "mike@other.com";
+
+	private final static String PASSWORD_FOR_USER_WITH_INCORRECT_DOMAIN = "pass";
 	
 
 	@Test
-	public void givenUser_whenUseFooClient_thenOkForFooResourceOnly() {
-		final String accessToken = obtainAccessToken(CLIENT_ID, USERNAME, PASSWORD);
+	public void givenUser_whenUsesFooClient_thenOkForFooResourceOnly() {
+		final String accessToken = obtainAccessToken(CLIENT_ID, USERNAME_WITH_CORRECT_DOMAIN, PASSWORD_FOR_USER_WITH_CORRECT_DOMAIN);
 
 		final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken)
 				.get(RESOURCE_SERVER + "/api/foos/1");
 		assertEquals(200, fooResponse.getStatusCode());
 		assertNotNull(fooResponse.jsonPath().get("name"));
+	}
+
+	@Test
+	public void givenUser_whenUsesFooClient_thenFailureForNonTestDomainUser() {
+		final String accessToken = obtainAccessToken(CLIENT_ID, USERNAME_WITH_INCORRECT_DOMAIN, PASSWORD_FOR_USER_WITH_INCORRECT_DOMAIN);
+
+		final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken)
+				.get(RESOURCE_SERVER + "/api/foos/1");
+		assertEquals(401, fooResponse.getStatusCode());
 	}
 
 	private String obtainAccessToken(String clientId, String username, String password) {
