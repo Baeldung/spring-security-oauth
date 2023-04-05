@@ -21,6 +21,7 @@
         <module>oauth-ui-authorization-code-angular</module>
         <module>oauth-ui-authorization-code-angular-zuul</module>
         <module>oauth-client-spring</module>
+        <module>keycloak-custom-protocol-mapper</module>
     </modules>
 
 </project>
