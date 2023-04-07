@@ -48,7 +48,7 @@ update_configs:
           version_requirement: "3.0.4"
       - match:
           dependency_name: "minimist"
-          version_requirement: "0.0.8"
+          version_requirement: ["0.0.8","1.2.0","1.2.5","1.2.8"]
       - match:
           dependency_name: "minipass"
           version_requirement: "2.3.5"
@@ -205,4 +205,4 @@ update_configs:
           version_requirement: "2.7"
       - match:
           dependency_name: "org.keycloak:keycloak-core"
-          version_requirement: "20.0.3"
+          version_requirement: ["21.0.0","21.0.1","20.0.3"]
