@@ -48,7 +48,7 @@ update_configs:
           version_requirement: "3.0.4"
       - match:
           dependency_name: "minimist"
-          version_requirement: ["0.0.8","1.2.0","1.2.5","1.2.8"]
+          version_requirement: ["0.0.8","1.2.6","1.2.8"]
       - match:
           dependency_name: "minipass"
           version_requirement: "2.3.5"
@@ -135,7 +135,7 @@ update_configs:
           version_requirement: "1.1.3"
       - match:
           dependency_name: "mkdirp"
-          version_requirement: "0.5.1"
+          version_requirement: ["0.5.1","0.5.6"]
       - match:
           dependency_name: "js-yaml"
           version_requirement: "3.12.0"
@@ -193,6 +193,15 @@ update_configs:
       - match:
           dependency_name: "json5"
           version_requirement: ["1.0.2", "2.2.3"]
+      - match:
+          dependency_name: "extend-shallow"
+          version_requirement: "2.0.1"
+      - match:
+          dependency_name: "is-number"
+          version_requirement: "3.0.0"
+      - match:
+          dependency_name: "kind-of"
+          version_requirement: "3.2.2"
   - package_manager: "java:maven"
     directory: "/"
     update_schedule: "daily"
@@ -205,4 +214,4 @@ update_configs:
           version_requirement: "2.7"
       - match:
           dependency_name: "org.keycloak:keycloak-core"
-          version_requirement: ["21.0.0","21.0.1","20.0.3"]
+          version_requirement: ["20.0.0","20.0.1","20.0.3"]
