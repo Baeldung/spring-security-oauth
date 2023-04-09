@@ -28,7 +28,19 @@
             <artifactId>keycloak-server-spi</artifactId>
             <version>${keycloak.version}</version>
         </dependency>
-        
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi-private</artifactId>
+            <version>${keycloak.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-services</artifactId>
+            <version>${keycloak.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -84,7 +96,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
 
-        <keycloak.version>11.0.2</keycloak.version>
+        <keycloak.version>21.0.1</keycloak.version>
 
         <!-- these should be updated together with Keycloak -->
         <!-- check keycloak-dependencies-server-all effective pom -->
