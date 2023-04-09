@@ -214,4 +214,11 @@ update_configs:
           version_requirement: "2.7"
       - match:
           dependency_name: "org.keycloak:keycloak-core"
-          version_requirement: ["20.0.0","20.0.1","20.0.3"]
+          version_requirement: ["20.0.0","21.0.0"]
+      - match:
+          dependency_name: "org.keycloak:keycloak-dependencies-server-all"
+          version_requirement: [ "20.0.0","21.0.0"]
+      - match:
+          dependency_name: "org.keycloak:keycloak-services"
+          version_requirement: [ "20.0.0","21.0.0","21.0.1"]
+
