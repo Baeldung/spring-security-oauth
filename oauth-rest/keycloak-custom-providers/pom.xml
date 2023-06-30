@@ -96,7 +96,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
 
-        <keycloak.version>21.0.1</keycloak.version>
+        <keycloak.version>21.1.2</keycloak.version>
 
         <!-- these should be updated together with Keycloak -->
         <!-- check keycloak-dependencies-server-all effective pom -->
