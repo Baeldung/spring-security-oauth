@@ -17,7 +17,7 @@ public class SimplePlatformProvider implements PlatformProvider {
 
 	Runnable shutdownHook;
 
-	@Override
+    @Override
 	public void onStartup(Runnable startupHook) {
 		startupHook.run();
 	}

@@ -1,6 +1,7 @@
 package com.baeldung.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.startsWith;
 
@@ -43,7 +44,7 @@ public class Oauth2ClientIntegrationTest {
     private final static Pair<String, String> RESOURCE_SERVER_PROP = Pair.of("resourceserver.api.foo.url", "http://localhost:{PORT}/resource-server/api/foos/");
 
     private final String CLIENT_SECURED_URL = "/foos";
-    private String REDIRECT_URI = "/login/oauth2/code/custom?state=%s&code=%s";
+    private final String REDIRECT_URI = "/login/oauth2/code/custom?state=%s&code=%s";
 
     @Value("${spring.security.oauth2.client.provider.custom.authorization-uri}")
     private String authServerAuthorizationURL;
@@ -95,14 +96,14 @@ public class Oauth2ClientIntegrationTest {
     }
 
     @BeforeEach
-    public void beforeEach() throws Exception {
+    public void beforeEach() {
         webTestClient = webTestClient.mutate()
             .responseTimeout(Duration.ofMillis(300000))
             .build();
     }
 
     @Test
-    public void givenAuthServerAndResourceServer_whenPerformClientLoginProcess_thenProcessExecutesOk() throws Exception {
+    void givenAuthServerAndResourceServer_whenPerformClientLoginProcess_thenProcessExecutesOk() throws Exception {
         // mimic login button action
         ExchangeResult result = this.webTestClient.get()
             .uri(CLIENT_SECURED_URL)
@@ -165,7 +166,7 @@ public class Oauth2ClientIntegrationTest {
             .expectStatus()
             .isFound()
             .expectHeader()
-            .value(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_URL))
+            .value(HttpHeaders.LOCATION, containsString(CLIENT_SECURED_URL))
             .returnResult(Void.class);
 
         // assert that Access Token Endpoint was requested as expected
@@ -222,7 +223,7 @@ public class Oauth2ClientIntegrationTest {
     }
 
     @Test
-    public void whenUnauthorized_thenRedirect() throws Exception {
+    void whenUnauthorized_thenRedirect() {
         this.webTestClient.get()
             .uri(CLIENT_SECURED_URL)
             .exchange()

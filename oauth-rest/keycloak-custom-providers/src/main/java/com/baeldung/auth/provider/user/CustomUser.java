@@ -8,6 +8,7 @@ import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
+import org.keycloak.models.SubjectCredentialManager;
 import org.keycloak.models.UserModel;
 import org.keycloak.storage.adapter.AbstractUserAdapter;
 
@@ -54,6 +55,11 @@ class CustomUser extends AbstractUserAdapter {
     @Override
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public SubjectCredentialManager credentialManager() {
+        return null;
     }
 
     public Date getBirthDate() {

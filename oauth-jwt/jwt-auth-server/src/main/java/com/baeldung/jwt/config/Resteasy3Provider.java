@@ -1,37 +1,35 @@
 package com.baeldung.jwt.config;
 
-import org.jboss.resteasy.core.Dispatcher;
-import org.jboss.resteasy.spi.ResteasyProviderFactory;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.jboss.resteasy.core.ResteasyContext;
 import org.keycloak.common.util.ResteasyProvider;
 
 public class Resteasy3Provider implements ResteasyProvider {
 
     @Override
     public <R> R getContextData(Class<R> type) {
-        ResteasyProviderFactory.getInstance();
-        return ResteasyProviderFactory.getContextData(type);
+        return ResteasyContext.getContextData(type);
     }
 
     @SuppressWarnings("rawtypes")
     @Override
     public void pushDefaultContextObject(Class type, Object instance) {
-        ResteasyProviderFactory.getInstance();
-        ResteasyProviderFactory.getContextData(Dispatcher.class)
-            .getDefaultContextObjects()
-            .put(type, instance);
+        Map<Class<?>, Object> map = new HashMap<>();
+        map.put(type, instance);
+        ResteasyContext.pushContextDataMap(map);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public void pushContext(Class type, Object instance) {
-        ResteasyProviderFactory.getInstance();
-        ResteasyProviderFactory.pushContext(type, instance);
+        ResteasyContext.pushContext(type, instance);
     }
 
     @Override
     public void clearContextData() {
-        ResteasyProviderFactory.getInstance();
-        ResteasyProviderFactory.clearContextData();
+        ResteasyContext.clearContextData();
     }
 
 }

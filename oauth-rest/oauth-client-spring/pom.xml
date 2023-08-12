@@ -52,6 +52,7 @@
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.1.1.RELEASE</version>
 		</dependency>
 
 		<!-- test scoped -->
@@ -111,7 +112,7 @@
 	<properties>
 		<!-- non-dependencies -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>13</java.version>
+		<java.version>17</java.version>
 
 	</properties>
 
