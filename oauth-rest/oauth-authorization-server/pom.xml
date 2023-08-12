@@ -3,16 +3,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>oauth-authorization-server</artifactId>
-    <name>oauth-authorization-server</name>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.9</version>
+        <version>3.1.1</version>
         <relativePath />
     </parent>
 
@@ -74,13 +72,13 @@
             <artifactId>keycloak-services</artifactId>
             <version>${keycloak.version}</version>
         </dependency>
-			    
+
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-rest-admin-ui-ext</artifactId>
 			<version>${keycloak.version}</version>
 		</dependency>
-			
+
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
@@ -96,7 +94,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
         <!-- config properties processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -164,11 +162,11 @@
     <properties>
         <!-- non-dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>13</java.version>
-        <keycloak.version>21.1.2</keycloak.version>
+        <java.version>17</java.version>
+        <keycloak.version>22.0.0</keycloak.version>
         <!-- these should be updated together with Keycloak -->
         <!-- check keycloak-dependencies-server-all effective pom -->
-        <resteasy.version>4.7.7.Final</resteasy.version>
+        <resteasy.version>6.2.3.Final</resteasy.version>
         <liquibase.version>4.16.1</liquibase.version>
         <infinispan.version>14.0.6.Final</infinispan.version>
     </properties>

@@ -1,6 +1,9 @@
 package com.baeldung.client.spring;
 
+import static org.springframework.web.reactive.function.server.HandlerStrategies.withDefaults;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
@@ -10,15 +13,17 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @EnableWebSecurity
+@Configuration
 public class ClientSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {// @formatter:off
-        http.authorizeHttpRequests(authorize -> authorize.antMatchers("/").permitAll()
-        		.anyRequest().authenticated())
-            .oauth2Login()
-            .and()
-            .logout().logoutSuccessUrl("/");
+        http.authorizeHttpRequests(authorize ->
+                        authorize.requestMatchers("/").permitAll()
+                        .anyRequest().authenticated())
+            .oauth2Login(httpSecurityOAuth2LoginConfigurer -> withDefaults())
+            .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.logoutSuccessUrl("/"));
+
         return http.build();
     }// @formatter:on
 

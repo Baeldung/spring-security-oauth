@@ -52,7 +52,7 @@ public class EmbeddedKeycloakConfig {
     }
 
     private void mockJndiEnvironment(DataSource dataSource) throws NamingException {
-        NamingManager.setInitialContextFactoryBuilder((env) -> (environment) -> new InitialContext() {
+        NamingManager.setInitialContextFactoryBuilder(env -> environment -> new InitialContext() {
 
             @Override
             public Object lookup(Name name) {

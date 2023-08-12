@@ -2,6 +2,7 @@ package com.baeldung.jwt.config;
 
 import java.io.File;
 
+import org.keycloak.Config;
 import org.keycloak.platform.PlatformProvider;
 import org.keycloak.services.ServicesLogger;
 
@@ -9,7 +10,12 @@ public class SimplePlatformProvider implements PlatformProvider {
 
 	Runnable shutdownHook;
 
-	@Override
+    @Override
+    public String name() {
+        return "SimplePlatformProvider";
+    }
+
+    @Override
 	public void onStartup(Runnable startupHook) {
 		startupHook.run();
 	}
@@ -26,16 +32,16 @@ public class SimplePlatformProvider implements PlatformProvider {
 	}
 
 	private void exit(int status) {
-		new Thread() {
-			@Override
-			public void run() {
-				System.exit(status);
-			}
-		}.start();
+		new Thread(() -> System.exit(status)).start();
 	}
 	
 	@Override
 	public File getTmpDirectory() {
 		return new File(System.getProperty("java.io.tmpdir"));
 	}
+
+    @Override
+    public ClassLoader getScriptEngineClassLoader(Config.Scope scope) {
+        return null;
+    }
 }

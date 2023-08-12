@@ -19,7 +19,7 @@ public class AuthorizationServerApp {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AuthorizationServerApp.class);
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		SpringApplication.run(AuthorizationServerApp.class, args);
 	}
 

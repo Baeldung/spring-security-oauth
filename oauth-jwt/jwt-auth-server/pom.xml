@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.7</version>
+		<version>3.1.1</version>
 		<relativePath />
 	</parent>
 
@@ -35,12 +35,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- Keycloak server -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jackson2-provider</artifactId>
-			<version>${resteasy.version}</version>
-		</dependency>
-		<dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-dependencies-server-all</artifactId>
 			<version>${keycloak.version}</version>
@@ -127,12 +127,12 @@
 	<properties>
 		<!-- non-dependencies -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>13</java.version>
-		<keycloak.version>18.0.0</keycloak.version>
+		<java.version>17</java.version>
+		<keycloak.version>22.0.0</keycloak.version>
 		<!-- these should be updated together with Keycloak -->
 		<!-- check keycloak-dependencies-server-all effective pom -->
 		<infinispan.version>13.0.8.Final</infinispan.version>
-		<resteasy.version>3.15.1.Final</resteasy.version>
+		<resteasy.version>6.2.4.Final</resteasy.version>
 	</properties>
 
 </project>
