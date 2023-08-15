@@ -1,0 +1,36 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          custom:
+            client-id: newClient
+            client-secret: newClientSecret
+            scope: read,write
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8082/oauth-client-spring/login/oauth2/code/custom
+        provider:
+          custom:
+            authorization-uri: http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth
+            token-uri: http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token
+            user-info-uri: http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+  thymeleaf:
+    cache: false
+  devtools:
+    livereload:
+      port: 35729
+
+server: 
+  port: 8082
+  servlet: 
+    context-path: /oauth-client-spring
+    
+logging: 
+  level: 
+    org.springframework: INFO
+
+resourceserver:
+  api:
+    foo:
+      url: http://localhost:8081/resource-server/api/foos/
