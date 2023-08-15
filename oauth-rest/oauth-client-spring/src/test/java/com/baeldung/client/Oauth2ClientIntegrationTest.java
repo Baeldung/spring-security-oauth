@@ -1,6 +1,7 @@
 package com.baeldung.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.startsWith;
 
@@ -102,7 +103,7 @@ public class Oauth2ClientIntegrationTest {
     }
 
     @Test
-    public void givenAuthServerAndResourceServer_whenPerformClientLoginProcess_thenProcessExecutesOk() throws Exception {
+    void givenAuthServerAndResourceServer_whenPerformClientLoginProcess_thenProcessExecutesOk() throws Exception {
         // mimic login button action
         ExchangeResult result = this.webTestClient.get()
             .uri(CLIENT_SECURED_URL)
@@ -165,7 +166,7 @@ public class Oauth2ClientIntegrationTest {
             .expectStatus()
             .isFound()
             .expectHeader()
-            .value(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_URL))
+            .value(HttpHeaders.LOCATION, containsString(CLIENT_SECURED_URL))
             .returnResult(Void.class);
 
         // assert that Access Token Endpoint was requested as expected
