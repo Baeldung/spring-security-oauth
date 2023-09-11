@@ -22,8 +22,8 @@
 				<version>1.7.5</version>
 
 				<configuration>
-					<nodeVersion>v10.15.3</nodeVersion>
-					<npmVersion>6.4.1</npmVersion>
+					<nodeVersion>v18.17.1</nodeVersion>
+					<npmVersion>9.6.7</npmVersion>
 					<workingDirectory>src/main/resources</workingDirectory>
 				</configuration>
 
