@@ -174,7 +174,7 @@ update_configs:
           version_requirement: ["1.2.3", "1.4.0", "3.2.1"]
       - match:
           dependency_name: "@angular-devkit/build-angular"
-          version_requirement: ["0.13.7", "15.0.2"]
+          version_requirement: ["0.13.7", "16.2.3"]
       - match:
           dependency_name: "terser"
           version_requirement: "3.17.0"
