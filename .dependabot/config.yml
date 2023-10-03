@@ -176,6 +176,9 @@ update_configs:
           dependency_name: "@angular-devkit/build-angular"
           version_requirement: ["0.13.7", "16.2.3"]
       - match:
+          dependency_name: "tough-cookie"
+          version_requirement: [ "2.4.3", "4.1.3" ]
+      - match:
           dependency_name: "terser"
           version_requirement: "3.17.0"
       - match:
