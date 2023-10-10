@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/common": "^7.2.11",
     "@angular/compiler": "^7.2.11",
-    "@angular/core": "^7.2.11",
+    "@angular/core": "^10.2.5",
     "@angular/forms": "^7.2.11",
     "@angular/platform-browser": "^7.2.11",
     "@angular/platform-browser-dynamic": "^7.2.11",
