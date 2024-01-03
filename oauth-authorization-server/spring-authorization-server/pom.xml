@@ -29,6 +29,10 @@
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
             <version>${spring-auth-server.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
