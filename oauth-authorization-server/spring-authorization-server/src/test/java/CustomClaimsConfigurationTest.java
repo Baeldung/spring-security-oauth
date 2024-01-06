@@ -38,7 +38,7 @@ public class CustomClaimsConfigurationTest {
 
     @Test
     public void givenAccessToken_whenGetCustomClaim_thenSuccess() throws ParseException {
-        String url =  ISSUER_URL + serverPort + "/oauth2/token";
+        String url = ISSUER_URL + serverPort + "/oauth2/token";
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(USERNAME, PASSWORD);
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
