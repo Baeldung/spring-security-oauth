@@ -84,4 +84,6 @@ In this page, we can:
   * List the resources in our resource server (public, no permissions needed)
   * Add resources (we're requested the permissions to do that when logging in. For simplicity sake, we just request the existing 'profile' scope)
   * Remove resources (we actually can't accomplish this task, because the resource server requires the application to have permissions that were not included in the existing scopes)
+  * 
+  test build
 
