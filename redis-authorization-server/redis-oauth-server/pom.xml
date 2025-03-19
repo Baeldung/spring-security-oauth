@@ -18,7 +18,6 @@
 
 	<dependencies>
 
-		<!-- web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -39,7 +38,6 @@
 			<artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
 		</dependency>
 
-		<!-- persistence -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -48,19 +46,14 @@
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
-			<version>5.2.0</version>
+			<version>${jedis.version}</version>
 		</dependency>
-
-		<!-- config properties processor -->
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-		<!-- test -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -83,13 +76,13 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
-			<version>1.19.7</version>
+			<version>${testcontainers.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
-			<version>6.4.3</version>
+			<version>${spring-boot-security.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -132,15 +125,12 @@
 	</developers>
 
 	<properties>
-		<!-- non-dependencies -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<keycloak.version>24.0.4</keycloak.version>
-		<!-- these should be updated together with Keycloak -->
-		<!-- check keycloak-dependencies-server-all effective pom -->
-		<resteasy.version>6.2.4.Final</resteasy.version>
-		<liquibase.version>4.25.1</liquibase.version>
-		<infinispan.version>14.0.6.Final</infinispan.version>
+		<testcontainers.version>1.19.7</testcontainers.version>
+		<jedis.version>5.2.0</jedis.version>
+		<spring-boot-starter.version>3.4.3</spring-boot-starter.version>
+		<spring-boot-security.version>6.4.3</spring-boot-security.version>
 	</properties>
 
 </project>
