@@ -21,4 +21,4 @@
 
 - [Spring REST API + OAuth2 + Angular](https://www.baeldung.com/rest-api-spring-oauth2-angular)
 - [OAuth2 for a Spring REST API – Handle the Refresh Token in Angular](https://www.baeldung.com/spring-security-oauth2-refresh-token-angular)
-- [Logout in an OAuth Secured Application](http://www.baeldung.com/logout-spring-security-oauth)
+- [Logout in an OAuth Secured Application](https://www.baeldung.com/logout-spring-security-oauth)
