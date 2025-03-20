@@ -42,19 +42,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.auth.AuthorizationServerApp</mainClass>
-                    <requiresUnpack>
-                        <dependency>
-                            <groupId>org.keycloak</groupId>
-                            <artifactId>keycloak-model-jpa</artifactId>
-                        </dependency>
-                    </requiresUnpack>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

@@ -23,19 +23,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor.netty</groupId>
-            <artifactId>reactor-netty</artifactId>
         </dependency>
     </dependencies>
 
@@ -48,19 +40,6 @@
                     <excludes>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.auth.AuthorizationServerApp</mainClass>
-                    <requiresUnpack>
-                        <dependency>
-                            <groupId>org.keycloak</groupId>
-                            <artifactId>keycloak-model-jpa</artifactId>
-                        </dependency>
-                    </requiresUnpack>
                 </configuration>
             </plugin>
         </plugins>
