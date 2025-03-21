@@ -1,0 +1,16 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    org.springframework.boot: INFO
+
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: http://localhost:9000
