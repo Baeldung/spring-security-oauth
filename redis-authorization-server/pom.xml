@@ -18,7 +18,6 @@
     <modules>
     	<module>redis-oauth-server</module>
     	<module>auth-client</module>
-    	<module>client-server</module>
     	<module>resource-server</module>
     </modules>
 </project>
