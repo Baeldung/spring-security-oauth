@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>auth-client</artifactId>
-    <name>auth-client</name>
+    <artifactId>redis-auth-client</artifactId>
+    <name>redis-auth-client</name>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
