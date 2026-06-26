@@ -1,10 +1,14 @@
 package com.baeldung.auth.config;
 
+import java.nio.charset.StandardCharsets;
 import java.util.NoSuchElementException;
 
 import org.keycloak.Config;
+import org.keycloak.common.util.StringPropertyReplacer;
+import org.keycloak.common.util.SystemEnvProperties;
 import org.keycloak.exportimport.ExportImportManager;
 import org.keycloak.models.KeycloakSession;
+import org.keycloak.models.RealmModel;
 import org.keycloak.representations.idm.RealmRepresentation;
 import org.keycloak.services.managers.ApplianceBootstrap;
 import org.keycloak.services.managers.RealmManager;
@@ -65,12 +69,18 @@ public class EmbeddedKeycloakApplication extends KeycloakApplication {
 			session.getTransactionManager().begin();
 
 			RealmManager manager = new RealmManager(session);
-			Resource lessonRealmImportFile = new ClassPathResource(keycloakServerProperties.getRealmImportFile());
-
-			manager.importRealm(
-					JsonSerialization.readValue(lessonRealmImportFile.getInputStream(), RealmRepresentation.class));
-
-			session.getTransactionManager().commit();
+			RealmModel baeldung = manager.getRealmByName("baeldung");
+			if (baeldung == null) { // maybe already exist realm if using external DB, skip importing.
+				Resource lessonRealmImportFile = new ClassPathResource(keycloakServerProperties.getRealmImportFile());
+				// Read realm to string
+				String stringRealm = lessonRealmImportFile.getContentAsString(StandardCharsets.UTF_8);
+				// replace ${name} to ENV values in realm
+				String realmWithEnv = StringPropertyReplacer.replaceProperties(stringRealm, new SystemEnvProperties(System.getenv()));
+				RealmRepresentation realmRepresentation = JsonSerialization.readValue(realmWithEnv, RealmRepresentation.class);
+				manager.importRealm(
+						realmRepresentation);
+				session.getTransactionManager().commit();
+			}
 		} catch (Exception ex) {
 			LOG.warn("Failed to import Realm json file: {}", ex.getMessage());
 			session.getTransactionManager().rollback();
